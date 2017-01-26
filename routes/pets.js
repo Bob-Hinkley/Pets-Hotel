@@ -57,8 +57,8 @@ router.post("/", function(req, res) {
       // 3. callback - function to run after the database gives us our result
       //               takes an error object and the result object as it's args
       client.query(
-        "INSERT INTO books (title, author, publication_date, edition, publisher) VALUES ($1, $2, $3, $4, $5) RETURNING *;",
-        [ req.body.title, req.body.author, req.body.published, req.body.edition, req.body.publisher],
+        "INSERT INTO pets (name, color, breed, owner_id) VALUES ($1, $2, $3, $4) RETURNING *;",
+        [req.body.name, req.body.color, req.body.breed, req.body.owner_id],
         function(err, result) {
           done();
           if (err) {

@@ -29,7 +29,7 @@ router.post("/", function(req, res) {
       //               takes an error object and the result object as it's args
       client.query(
         "INSERT INTO owners (first_name, last_name) VALUES ($1, $2) RETURNING *;",
-        [ req.body.firstName, req.body.lastName],
+        [req.body.firstName, req.body.lastName],
         function(err, result) {
           done();
           if (err) {
