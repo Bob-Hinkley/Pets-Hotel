@@ -5,9 +5,8 @@ $(function(){
   getOwners();
 
   // // listen for a submit event on the form
-  // $('#book-form').on('submit', addBook);
-  // $('#book-list').on('click', '.save', updateBook);
-  // $('#book-list').on('click', '.delete', deleteBook);
+  $('#owner-form').on('submit', addOwner);
+  $('#pet-form').on('submit', addPet);
 
 });
 
@@ -28,4 +27,32 @@ function displayOwners(owners) {
     $('#owner_name').append($option);
   })
 
+}
+
+function addOwner (event) {
+  event.preventDefault();
+
+  var formData = $(this).serialize();
+  console.log(formData);
+
+  $.ajax({
+    url: '/owners',
+    type: 'POST',
+    data: formData,
+    success: getOwners
+  });
+}
+
+function addPet (event) {
+  event.preventDefault();
+
+  var formData = $(this).serialize();
+  console.log(formData);
+
+  $.ajax({
+    url: '/pets',
+    type: 'POST',
+    data: formData,
+    // success: getOwners
+  });
 }
