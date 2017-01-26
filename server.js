@@ -3,11 +3,13 @@ var app = express();
 var path = require('path');
 var bodyParser = require('body-parser');
 var pets = require('./routes/pets');
+var owners = require('./routes/owners');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 app.use('/pets', pets);
+app.use('/owners', owners);
 
 // serve the index page at /
 app.get('/', function (req, res) {
@@ -17,6 +19,5 @@ app.get('/', function (req, res) {
 var port = process.env.PORT || 3000;
 var server = app.listen(port, function () {
   console.log('Listening on port ', server.address().port);
-  console.console.log('Press Control + C to exit');
-  );
+  console.log('Press Control + C to exit');
 });
