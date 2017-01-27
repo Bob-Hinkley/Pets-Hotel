@@ -77,19 +77,18 @@ function displayPetList (petList) {
   petList.forEach(function(pet){
 
     var $row = $('<tr></tr>');
-    var $form = $('<form></form>');
-    $form.append('<td>' + pet.first_name + ' ' + pet.last_name + '</td>');
-    $form.append('<td><input type = "text" name = "name" value ="' + pet.name + '"/></td>');
-    $form.append('<td><input type = "text" name = "breed" value ="' + pet.breed + '"/></td>');
-    $form.append('<td><input type = "text" name = "color" value ="' + pet.color + '"/></td>');
-    $form.append('<td><button class="update" data-id="' + pet.pets_id + '"> GO! </button></td>');
-    $form.append('<td><button class="delete" data-id="' + pet.pets_id + '"> Delete! </button></td>');
+
+    $row.append('<td>' + pet.first_name + ' ' + pet.last_name + '</td>');
+    $row.append('<td><input type = "text" name = "name" value ="' + pet.name + '"/></td>');
+    $row.append('<td><input type = "text" name = "breed" value ="' + pet.breed + '"/></td>');
+    $row.append('<td><input type = "text" name = "color" value ="' + pet.color + '"/></td>');
+    $row.append('<td><button class="update" data-id="' + pet.pets_id + '"> GO! </button></td>');
+    $row.append('<td><button class="delete" data-id="' + pet.pets_id + '"> Delete! </button></td>');
     if (pet.check_in == null){
-      $form.append('<td><button class="checkInOut" data-id="' + pet.pets_id + '" data-status="in">Check Dog In!</button></td>');
+      $row.append('<td><button class="checkInOut" data-id="' + pet.pets_id + '" data-status="in">Check Dog In!</button></td>');
     } else {
-      $form.append('<td><button class="checkInOut" data-id="' + pet.pets_id + '" data-status="out">Check Dog Out!</button></td>');
+      $row.append('<td><button class="checkInOut" data-id="' + pet.pets_id + '" data-status="out">Check Dog Out!</button></td>');
     }
-    $row.append($form);
     $("#pet_list").append($row);
 
   })
@@ -97,9 +96,9 @@ function displayPetList (petList) {
 function updatePet(event){
   event.preventDefault();
   var $button = $(this);
-  var $form = $button.closest('form');
-  var data = $form.serialize();
-  console.log(data);
+  var $form = $button.closest('tr');
+  var data = $form.find('input').serialize();
+  console.log($form.find('input'));
   $.ajax({
     url: '/pets/' + $button.data('id'),
     type: 'PUT',
