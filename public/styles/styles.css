@@ -8,11 +8,26 @@ form {
   width:70%;
   margin-left:15%;
   margin-right:15%;
+}
+th {
+    background-color: lightgray;
+    font-size: 1.5em;
+}
+
+td, th {
+  width: 150px;
+  border: 1px solid black;
+}
+
+#pet_list input {
+  width: 100%;
+}
+
+#pet_list button {
+  margin: auto;
+  display: block;
 
 }
-/*td, th {
-  width: 150px;
-}*/
 
 h1 {
   width: 90%;
