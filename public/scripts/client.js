@@ -82,12 +82,12 @@ function displayPetList (petList) {
     $row.append('<td><input type = "text" name = "name" value ="' + pet.name + '"/></td>');
     $row.append('<td><input type = "text" name = "breed" value ="' + pet.breed + '"/></td>');
     $row.append('<td><input type = "text" name = "color" value ="' + pet.color + '"/></td>');
-    $row.append('<td><button class="update" data-id="' + pet.pets_id + '"> GO! </button></td>');
-    $row.append('<td><button class="delete" data-id="' + pet.pets_id + '" value ="' + pet.name + '"> Delete! </button></td>');
+    $row.append('<td><button class="update btn btn-default" data-id="' + pet.pets_id + '"> GO! </button></td>');
+    $row.append('<td><button class="delete btn btn-danger" data-id="' + pet.pets_id + '" value ="' + pet.name + '"> Delete! </button></td>');
     if (pet.check_in == null){
-      $row.append('<td><button class="checkInOut" data-id="' + pet.pets_id + '" data-status="in">Check Dog In!</button></td>');
+      $row.append('<td><button class="checkInOut btn btn-default" data-id="' + pet.pets_id + '" data-status="in">Check Dog In!</button></td>');
     } else {
-      $row.append('<td><button class="checkInOut" data-id="' + pet.pets_id + '" data-status="out">Check Dog Out!</button></td>');
+      $row.append('<td><button class="checkInOut btn btn-default" data-id="' + pet.pets_id + '" data-status="out">Check Dog Out!</button></td>');
     }
     $("#pet_list").append($row);
 
@@ -110,8 +110,6 @@ function updatePet(event){
 }
 function deletePet(event){
   event.preventDefault();
-
-
 
   var $button = $(this);
     console.log($(this));
