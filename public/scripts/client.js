@@ -83,7 +83,7 @@ function displayPetList (petList) {
     $row.append('<td><input type = "text" name = "breed" value ="' + pet.breed + '"/></td>');
     $row.append('<td><input type = "text" name = "color" value ="' + pet.color + '"/></td>');
     $row.append('<td><button class="update" data-id="' + pet.pets_id + '"> GO! </button></td>');
-    $row.append('<td><button class="delete" data-id="' + pet.pets_id + '"> Delete! </button></td>');
+    $row.append('<td><button class="delete" data-id="' + pet.pets_id + '" value ="' + pet.name + '"> Delete! </button></td>');
     if (pet.check_in == null){
       $row.append('<td><button class="checkInOut" data-id="' + pet.pets_id + '" data-status="in">Check Dog In!</button></td>');
     } else {
@@ -110,12 +110,19 @@ function updatePet(event){
 }
 function deletePet(event){
   event.preventDefault();
+
+
+
   var $button = $(this);
-  $.ajax({
-    url: '/pets/' + $button.data('id'),
-    type: 'DELETE',
-    success: getPetList
-  });
+    console.log($(this));
+  var petName = $(this).val();
+    if (confirm("Are you sure you want to delete: " + petName + "?")) {
+      $.ajax({
+        url: '/pets/' + $button.data('id'),
+        type: 'DELETE',
+        success: getPetList
+      });
+    };
 }
 
 function checkPetInOut(event){
