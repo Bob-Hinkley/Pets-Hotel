@@ -11,21 +11,30 @@
 
   </head>
   <body>
-    <h1>Owners and Pets</h1>
+    <div class='row'>
+    <h1 class="col-xs-8">Owners and Pets</h1>
+    <a href="/visitList" class="col-xs-4">Go To Visit List</a>
+  </div>
+
     <h2>Owner Registration</h2>
+
+    <div class="row">
     <form id="owner-form">
-      <div class="form-group">
+
+      <div class="form-group col-xs-4">
         <label for="first_name">First Name:</label>
         <input type="text" id="first_name" name="first_name" class="form-control" />
       </div>
 
-      <div class="form-group">
+      <div class="form-group col-xs-4">
         <label for="last_name">Last Name:</label>
         <input type="text" id="last_name" name="last_name" class="form-control" />
       </div>
-      <button id="owner_submit" class="btn">Register</button>
+      <button id="owner_submit" class="btn col-xs-2">Register</button>
 
     </form>
+    </div>
+
     <h2>Pets</h2>
     <form id="pet-form">
 
@@ -73,6 +82,8 @@
       </tbody>
     </table>
 
-    <a href="/visitList">Go To Visit List</a>
+<br />
+<br />
+
   </body>
 </html>
