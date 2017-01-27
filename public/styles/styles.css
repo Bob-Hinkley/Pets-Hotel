@@ -29,6 +29,12 @@ td, th {
 
 }
 
+/*#owner-form {
+  display: flex;
+}*/
+
+
+
 h1 {
   width: 90%;
   margin-left:5%;
