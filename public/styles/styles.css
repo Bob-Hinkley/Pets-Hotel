@@ -17,10 +17,16 @@ th {
 td, th {
   width: 150px;
   border: 1px solid black;
+  text-align: center;
+}
+
+.btn-default {
+  background-color: lightgrey;
 }
 
 #pet_list input {
   width: 100%;
+  text-align: center;
 }
 
 #pet_list button {
@@ -29,17 +35,21 @@ td, th {
 
 }
 
-/*#owner-form {
-  display: flex;
-}*/
+p {
+
+}
+
+ a {
+  font-size: 1.5em;
+}
 
 
 
-h1 {
+/*h1 {
   width: 90%;
   margin-left:5%;
   margin-right:5%;
-}
+}*/
 h2 {
   width:80%;
   margin-left:10%;
