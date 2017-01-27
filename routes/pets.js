@@ -157,15 +157,15 @@ router.delete('/:id', function(req, res){
 });
 
 router.put('/:id', function(req, res){
-  console.log(req.body);
+  console.log(req.body, "req.body PUT");
   pool.connect(function(err, client, done){
     if(err) {
       console.log("Error connecting to DB: ", err);
       res.sendStatus(500);
       done();
     } else {
-      client.query('UPDATE pets SET name=$2, breed=$3, color=$4, edition=$5, publisher=$6 WHERE id = $1 RETURNING *',
-        [req.params.id, req.body.title, req.body.author, req.body.published, req.body.edition, req.body.publisher], function(err, result){
+      client.query('UPDATE pets SET name=$2, breed=$3, color=$4 WHERE id = $1 RETURNING *',
+        [req.params.id, req.body.name, req.body.breed, req.body.color], function(err, result){
         done();
         if (err) {
           console.log("Error deleting from DB: ", err);

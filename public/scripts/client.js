@@ -73,6 +73,7 @@ function getPetList (event) {
 function displayPetList (petList) {
   // console.log(petList);
   $('#pet_list').empty();
+  console.log("pet list", petList);
   petList.forEach(function(pet){
 
     var $row = $('<tr></tr>');
@@ -99,12 +100,12 @@ function updatePet(event){
   var $form = $button.closest('form');
   var data = $form.serialize();
   console.log(data);
-  // $.ajax({
-  //   url: '/pets/' + $button.data('id'),
-  //   type: 'PUT',
-  //   data: data,
-  //   success: getPetList
-  // });
+  $.ajax({
+    url: '/pets/' + $button.data('id'),
+    type: 'PUT',
+    data: data,
+    success: getPetList
+  });
 
 
 }
@@ -125,11 +126,24 @@ function checkPetInOut(event){
 
   if($button.data('status') == "in"){
     $.ajax({
-      url: '/visits/' + $button.data('id'),
+      url: '/visits/in/' + $button.data('id'),
       type: 'PUT',
       data: today,
       success: getPetList
     })
+  } else {
+
+    $.ajax({
+      url: '/visits/out/' + $button.data('id'),
+      type: 'PUT',
+      data: today,
+      success: getPetList
+
+    })
+
+
+
+
   }
 
 }
